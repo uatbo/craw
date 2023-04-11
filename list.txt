@@ -1,0 +1,45 @@
+卷 Data 的文件夹 PATH 列表
+卷序列号为 8CFF-F114
+D:.
+│  good_ke_jian.py
+│  list.txt
+│  main.py
+│  README.md
+│  test.py
+│  
+├─.idea
+│  │  .gitignore
+│  │  craw.iml
+│  │  misc.xml
+│  │  modules.xml
+│  │  workspace.xml
+│  │  
+│  └─inspectionProfiles
+│          profiles_settings.xml
+│          
+├─parsers
+│  │  good_ke_jian.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          good_ke_jian.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─requests
+│  │  good_ke_jian.py
+│  │  __init__.py
+│  │  
+│  └─__pycache__
+│          good_ke_jian.cpython-38.pyc
+│          __init__.cpython-38.pyc
+│          
+├─results
+│      good_ke_jian.csv
+│      
+├─utils
+│      rabbitmq.py
+│      __init__.py
+│      
+└─__pycache__
+        good_ke_jian.cpython-38.pyc
+        
