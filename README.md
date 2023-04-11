@@ -43,7 +43,7 @@ conda install --yes --file requirements.txt
 beautifulsoup
 
 请求：
-urllib
+urllib 或 requests
 
 消息队列：
 pika
