@@ -1,6 +1,6 @@
 import re
 import time
-
+import yaml
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver as sdriver
@@ -11,6 +11,11 @@ class zxx_edu_cn_parser():
     def __init__(self, driverfile_path):
         self.url = "https://www.zxx.edu.cn/syncClassroom"
         self.driverfile_path = driverfile_path
+
+        # 读取配置文件
+        with open('../configs/zxx_edu_cn.yml', 'r', encoding='utf-8') as file:
+            self.sinfo = yaml.safe_load(file)
+
         self.data = {
             "grade": [],
             "semester": [],
@@ -285,31 +290,47 @@ class zxx_edu_cn_parser():
         self.driver.get(self.url)
         print(self.driver.current_url)
 
-        sinfo = {
-            "grade": ["三年级", "四年级"],
-            "semester": ["上册", "下册"],
-            "version": ["北京版", "北师大版", "苏教版", "人教版"],
-        }
+
         info = {
             "grade": None,
             "semester": None,
             "version": None
         }
-        for grade in sinfo["grade"]:
-            for version in sinfo["version"]:
-                for semester in sinfo["semester"]:
-                    info["grade"] = grade
-                    info["version"] = version
-                    info["semester"] = semester
-                    if self.click_option(info) is True:
-                        print("爬取信息 " + "grade: " + grade + ", " + "version: " + version + ", " + "semester: " + semester)
-                        time.sleep(5)  # 等待视频列表加载完成
-                        if version == "北京版":
-                            self.parse_video_list_1(info)
-                        else:
-                            self.parse_video_list_2(info)
-                    else:
-                        continue
+
+        while (len(self.sinfo) != 0):
+            info["grade"] = self.sinfo[0][0]
+            info["version"] = self.sinfo[0][1]
+            info["semester"] = self.sinfo[0][2]
+            if self.click_option(info) is True:
+                print("爬取信息 " + "grade: " + info["grade"] + ", " +
+                      "version: " + info["version"] + ", " +
+                      "semester: " + info["semester"])
+                time.sleep(5)  # 等待视频列表加载完成
+                if info["version"] == "北京版":
+                    self.parse_video_list_1(info)
+                else:
+                    self.parse_video_list_2(info)
+
+                self.sinfo.pop(0)
+
+            else:
+                continue
+
+        # for grade in self.sinfo["grade"]:
+        #     for version in self.sinfo["version"]:
+        #         for semester in self.sinfo["semester"]:
+        #             info["grade"] = grade
+        #             info["version"] = version
+        #             info["semester"] = semester
+        #             if self.click_option(info) is True:
+        #                 print("爬取信息 " + "grade: " + grade + ", " + "version: " + version + ", " + "semester: " + semester)
+        #                 time.sleep(5)  # 等待视频列表加载完成
+        #                 if version == "北京版":
+        #                     self.parse_video_list_1(info)
+        #                 else:
+        #                     self.parse_video_list_2(info)
+        #             else:
+        #                 continue
 
 
 if __name__ == "__main__":
