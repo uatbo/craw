@@ -316,4 +316,3 @@ if __name__ == "__main__":
     driverfile_path = "D:/Files/Projects/msedgedriver.exe"
     request = zxx_edu_cn_parser(driverfile_path=driverfile_path)
     request.get_video_url()
-
