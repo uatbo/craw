@@ -12,7 +12,7 @@ craw 项目的一些说明
 │      good_ke_jian.py    # 好课件的解析器
 │      __init__.py
 │          
-├─requests
+├─requesters
 │      good_ke_jian.py    # 好课件的请求器
 │      __init__.py
 │          

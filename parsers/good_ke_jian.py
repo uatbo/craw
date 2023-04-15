@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup as bs
-from requests.good_ke_jian import good_ke_jian_request as gkjrq
+from requesters.good_ke_jian import good_ke_jian_request as gkjrq
 
 import re
 
@@ -223,7 +223,7 @@ class good_ke_jian:
 
 
 # from bs4 import BeautifulSoup as bs
-# from requests.good_ke_jian import good_ke_jian_request as gkjrq
+# from requesters.good_ke_jian import good_ke_jian_request as gkjrq
 # import pika
 # import re
 # import json
