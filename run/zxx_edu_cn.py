@@ -13,19 +13,19 @@ def run():
         with open('./configs/zxx_edu_cn.yml', 'w', encoding='utf-8') as file:
             yaml.dump(request.sinfo, file, allow_unicode=True)
             # 清除不完整的数据
-            while (True):
-                if request.data["grade"][-1] == request.sinfo[0][0] and request.data["version"][-1] == request.sinfo[0][1] and request.data["semester"][-1] == request.sinfo[0][2]:
-                    request.data["grade"].pop()
-                    request.data["semester"].pop()
-                    request.data["category"].pop()
-                    request.data["version"].pop()
-                    request.data["executor"].pop()
-                    request.data["chapter"].pop()
-                    request.data["section"].pop()
-                    request.data["name"].pop()
-                    request.data["content"].pop()
-                else:
-                    break
+        while (True):
+            if request.data["grade"][-1] == request.sinfo[0][0] and request.data["version"][-1] == request.sinfo[0][1] and request.data["semester"][-1] == request.sinfo[0][2]:
+                request.data["grade"].pop()
+                request.data["semester"].pop()
+                request.data["category"].pop()
+                request.data["version"].pop()
+                request.data["executor"].pop()
+                request.data["chapter"].pop()
+                request.data["section"].pop()
+                request.data["name"].pop()
+                request.data["content"].pop()
+            else:
+                break
         print(Exception)
 
 
