@@ -3,7 +3,7 @@ from parsers.zxx_edu_cn import zxx_edu_cn_parser
 
 
 def run():
-    driverfile_path = "D:/Files/Projects/msedgedriver.exe"
+    driverfile_path = "C:/Users/uatbo/Desktop/msedgedriver.exe"
     request = zxx_edu_cn_parser(driverfile_path=driverfile_path)
     request.get_video_url()
 

@@ -288,7 +288,7 @@ class zxx_edu_cn_parser():
         sinfo = {
             "grade": ["三年级", "四年级"],
             "semester": ["上册", "下册"],
-            "version": ["北师大版", "苏教版", "人教版"], # "北京版",
+            "version": ["北京版", "北师大版", "苏教版", "人教版"],
         }
         info = {
             "grade": None,
