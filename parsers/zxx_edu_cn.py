@@ -48,6 +48,7 @@ class zxx_edu_cn_parser():
 
         return m3u8_url
 
+
     # 解析视频列表
     def parse_video_list_1(self, info):
         time.sleep(1)
@@ -125,8 +126,6 @@ class zxx_edu_cn_parser():
                     # 解析目录区域
                     contents_area = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(
                         (By.XPATH, "/html/body/div/div/div/div[3]/div[4]/div[2]/div[2]/div/div/div/div/div/div/div[3]/div[2]/div[3]/div/div/div")))
-
-
                     # 预处理，将所有的标签全部关闭
                     contents = contents_area.find_elements(By.XPATH, "./*")
                     contents[1].click()
@@ -202,6 +201,7 @@ class zxx_edu_cn_parser():
                 contents = contents_area.find_elements(By.XPATH, "./*")
                 contents[0].click()
                 time.sleep(0.5)
+                contents = contents_area.find_elements(By.XPATH, "./*")
 
 
         print("ok")
@@ -288,7 +288,7 @@ class zxx_edu_cn_parser():
         sinfo = {
             "grade": ["三年级", "四年级"],
             "semester": ["上册", "下册"],
-            "version": ["北京版", "北师大版", "苏教版", "人教版"],
+            "version": ["北师大版", "苏教版", "人教版"], # "北京版",
         }
         info = {
             "grade": None,
