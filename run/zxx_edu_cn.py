@@ -10,7 +10,7 @@ def run():
         request.get_video_url()
     except Exception:
         # 将列表保存为 YAML 文件
-        with open('./configs/zxx_edu_cn.yml', 'w', encoding='utf-8') as file:
+        with open('../configs/zxx_edu_cn.yml', 'w', encoding='utf-8') as file:
             yaml.dump(request.sinfo, file, allow_unicode=True)
         # 清除不完整的数据
         while (True):
@@ -24,6 +24,10 @@ def run():
                 request.data["section"].pop()
                 request.data["name"].pop()
                 request.data["content"].pop()
+                # 如果为空了要跳出循环
+                if len(request.data["grade"]) == 0:
+                    break
+            # 如果不为空，但是当前记录已经清空则跳出循环
             else:
                 break
         print(Exception)
