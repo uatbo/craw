@@ -51,7 +51,7 @@ def zxx_edu_cn():
         pika.ConnectionParameters('114.132.249.3', 5672, "/", pika.PlainCredentials("admin", "rabbitmlgbz0729")))
     channel = connection.channel()
     # 创建消息队列，如果队列已存在则不会重复创建
-    channel.queue_declare(queue='courseware_queue')
+    channel.queue_declare(queue='video_url_queue', durable=True)
     # 读取文件
     data = pandas.read_csv(path)
     # 发送到消息队列
@@ -79,7 +79,7 @@ def zxx_edu_cn():
         ).encode("utf-8")
         print(body)
         # 向消息队列发送消息
-        channel.basic_publish(exchange='courseware_exchange', routing_key='hello', body=body)
+        channel.basic_publish(exchange='video_url_exchange', routing_key='*', body=body)
         print("Sent!")
         time.sleep(0.5)
 
